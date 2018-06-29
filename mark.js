@@ -20,22 +20,22 @@ var colorTable = [
 
 function loadImage(imgId, ctx, Position) {
     var img = document.getElementById(imgId);
-    var imgElement = document.getElementById('imgContent');
+    var canvas = document.getElementById('canvas');
     switch (Position) {
         case "UL":
             ctx.drawImage(img, 20, 20);
             break;
         case "UR":
-            ctx.drawImage(img, imgElement.width - 20 - img.width, 20);
+            ctx.drawImage(img, canvas.width - 20 - img.width, 20);
             break;
         case "M":
-            ctx.drawImage(img, imgElement.width / 2 - img.width / 2, imgElement.height / 2 - img.height / 2);
+            ctx.drawImage(img, canvas.width / 2 - img.width / 2, canvas.height / 2 - img.height / 2);
             break;
         case "DM":
-            ctx.drawImage(img, imgElement.width / 2 - img.width / 2, imgElement.height - 5 - img.height);
+            ctx.drawImage(img, canvas.width / 2 - img.width / 2, canvas.height - 5 - img.height);
             break;
         case "DR":
-            ctx.drawImage(img, imgElement.width - 10 - img.width, imgElement.height - 5 - img.height);
+            ctx.drawImage(img, canvas.width - 10 - img.width, canvas.height - 5 - img.height);
             break;
     }
 }
@@ -200,8 +200,16 @@ $(document).ready(function () {
         var imgElement = document.getElementById('imgContent');
         var canvas = document.getElementById('canvas');
         var ctx = canvas.getContext("2d");
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(imgElement, 0, 0);
+        if ($("#zoom").prop('checked')) {
+            var zoom = parseFloat($('#zoomV').val()) / 50;
+            canvas.height = Math.round(imgElement.height * zoom);
+            canvas.width = Math.round(imgElement.width * zoom);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(imgElement, 0, 0, canvas.width, canvas.height);
+        } else {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(imgElement, 0, 0);
+        }
         if ($("#xilixili").prop('checked')) {
             loadImage("imgxilixili", ctx, $('input[name="xilixiliP"]:checked').val());
         }

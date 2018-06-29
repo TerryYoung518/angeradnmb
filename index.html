@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="mark.js"></script>
+</head>
+
+<body>
+    <div align="center" style="margin:10px;">
+
+        <form id="imgForm">
+            <input type="file">
+            <button type="button" id="load">导入</button>
+            <img id="imgContent">
+        </form>
+        <Canvas id="canvas" style="border:1px solid #d3d3d3;background:#ffffff; margin-top:15px;">123</Canvas>
+        <form id="options" style="margin:10px;">
+            <input type="checkbox" id="xilixili"/>xilixili水印
+            <img id="imgxilixili" src="marks/bilibili.png">
+            <input type="radio" name="xilixiliP" value="UL" checked/> 左上
+            <input type="radio" name="xilixiliP" value="UR" /> 右上
+            <br>
+            <input type="checkbox" id="LSL"/>里神阅水印
+            <img id="imgLSL" src="marks/LSL.png">
+            <input type="radio" name="LSLP" value="M" checked/> 居中
+            <input type="radio" name="LSLP" value="DM" /> 下中
+            <input type="radio" name="LSLP" value="DR" /> 下右
+            <br>
+            <input type="checkbox" id="green"/>变绿
+            <input type="range" id="greenV" value="50"/>
+            <br>
+            <input type="checkbox" id="compress"/>画质
+            <input type="range" id="compressV" value="50"/>
+            <br>
+            <button type="button" id="deal">生成</button>
+        </form>
+    
+    </div>
+
+</body>
+
+</html>

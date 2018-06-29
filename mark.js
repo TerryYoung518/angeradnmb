@@ -207,6 +207,8 @@ $(document).ready(function () {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(imgElement, 0, 0, canvas.width, canvas.height);
         } else {
+            canvas.height = imgElement.height;
+            canvas.width = imgElement.width;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(imgElement, 0, 0);
         }

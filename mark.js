@@ -165,7 +165,10 @@ $(document).ready(function () {
     $("#imgxilixili").hide();
     $("#imgLSL").hide();
     $("#imgContent").hide();
+    $("#output").hide();
     $("#load").on("click", function () {
+        $("#output").hide();
+        $("#canvas").show();
         //获取文件
         var file = $("#imgForm").find("input")[0].files[0];
         if (!file) {
@@ -215,5 +218,8 @@ $(document).ready(function () {
             compress(imgData, parseFloat($('#compressV').val())/100);
             ctx.putImageData(imgData, 0, 0);
         }
+        document.getElementById('output').src = canvas.toDataURL("image/png");
+        $("#canvas").hide();
+        $("#output").show();
     });
 });
